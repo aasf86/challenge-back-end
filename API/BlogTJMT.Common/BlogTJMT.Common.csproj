@@ -44,8 +44,28 @@
     <Compile Include="Enum\MenuEnum.cs" />
     <Compile Include="Enum\PermicaoEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\MensagensErro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MensagensErro.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MensagensSucesso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MensagensSucesso.resx</DependentUpon>
+    </Compile>
     <Compile Include="Security\EncryptString.cs" />
     <Compile Include="Validations\ValidationClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MensagensErro.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MensagensErro.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MensagensSucesso.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MensagensSucesso.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

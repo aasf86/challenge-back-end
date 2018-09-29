@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BlogTJMT.Common.Resources;
 using BlogTJMT.Common.Security;
 using BlogTJMT.Common.Validations;
 using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
+using System;
 using System.Linq;
 
 namespace BlogTJMT.Data.Repositories
@@ -36,7 +37,7 @@ namespace BlogTJMT.Data.Repositories
         private Usuario ValidaUsuario(Usuario usuario)
         {
             if (usuario == null)
-                throw new Exception("Usuário não encontrado.");
+                throw new Exception(MensagensErro.UsuarioNaoEncontrado);
 
             return usuario;
         }

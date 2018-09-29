@@ -1,4 +1,5 @@
-﻿using BlogTJMT.Common.Validations;
+﻿using BlogTJMT.Common.Resources;
+using BlogTJMT.Common.Validations;
 using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
@@ -24,7 +25,21 @@ namespace BlogTJMT.Data.Repositories
             ValidationClass.ValidaClasse(perfil);
             _db.Perfis.Add(perfil);
             _db.SaveChanges();
+
+            perfil.Permicoes.ForEach(campo => SalvarPermicoes(campo, perfil));
+
             return perfil;
+        }
+
+        private void SalvarPermicoes(Permicao campo, Perfil perfil)
+        {
+            _db.PerfilPermicoes.Add(new PerfilPermicao
+            {
+                PerfilId = perfil.Id,
+                PermicaoId = campo.Id
+            });
+
+            _db.SaveChanges();
         }
 
         public Perfil Put(Perfil perfil)
@@ -40,6 +55,14 @@ namespace BlogTJMT.Data.Repositories
         {
             _db.Perfis.Remove(_db.Perfis.Find(id));
             _db.SaveChanges();
+
+            ExcluiPerfilPermicao(id);
+        }
+
+        private void ExcluiPerfilPermicao(int id)
+        {
+            _db.PerfilPermicoes.Remove(_db.PerfilPermicoes.FirstOrDefault(coluna => coluna.PerfilId == id));
+            _db.SaveChanges();
         }
 
         public void Dispose()
@@ -54,7 +77,7 @@ namespace BlogTJMT.Data.Repositories
                           select item).FirstOrDefault();
 
             if (result != null)
-                throw new Exception($"Já existe um perfil cadastrado com está descrição: {perfil.Descricao}");
+                throw new Exception($"{MensagensErro.PerfilDuplicado} {perfil.Descricao}");
 
         }
     }

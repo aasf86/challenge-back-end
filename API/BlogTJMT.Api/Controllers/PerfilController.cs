@@ -1,4 +1,4 @@
-﻿using BlogTJMT.Common.Validations;
+﻿using BlogTJMT.Common.Resources;
 using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Data.Repositories;
 using BlogTJMT.Domain.Model;
@@ -34,7 +34,6 @@ namespace BlogTJMT.Api.Controllers
         {
             try
             {
-                ValidationClass.ValidaClasse(perfil);
                 var result = _PerfilRepository.Post(perfil);
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
@@ -50,9 +49,8 @@ namespace BlogTJMT.Api.Controllers
         {
             try
             {
-                ValidationClass.ValidaClasse(perfil);
                 _PerfilRepository.Put(perfil);
-                return Request.CreateResponse(HttpStatusCode.OK, "Perfil alterado com sucesso.");
+                return Request.CreateResponse(HttpStatusCode.OK, MensagensSucesso.PerfilAlterado);
             }
             catch (Exception ex)
             {
@@ -65,7 +63,7 @@ namespace BlogTJMT.Api.Controllers
         public HttpResponseMessage Delete(int id)
         {
             _PerfilRepository.Delete(id);
-            return Request.CreateResponse(HttpStatusCode.OK, "Perfil excluído com sucesso.");
+            return Request.CreateResponse(HttpStatusCode.OK, MensagensSucesso.PerfilExcluido);
         }
     }
 }

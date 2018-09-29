@@ -1,4 +1,5 @@
-﻿using BlogTJMT.Common.Validations;
+﻿using BlogTJMT.Common.Resources;
+using BlogTJMT.Common.Validations;
 using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
@@ -51,7 +52,7 @@ namespace BlogTJMT.Data.Repositories
                                      select item).FirstOrDefault();
 
             if (result != null)
-               throw new Exception($"Já existe uma categoria cadastrada com está descrição: {categoria.Descricao}");
+               throw new Exception($"{MensagensErro.CategoriaDuplicada} {categoria.Descricao}");
         }
     }
 }

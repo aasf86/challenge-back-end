@@ -1,5 +1,4 @@
 ﻿using BlogTJMT.Domain.Model;
-using System.Collections.Generic;
 
 namespace BlogTJMT.Domain.Contract.Repositories
 {

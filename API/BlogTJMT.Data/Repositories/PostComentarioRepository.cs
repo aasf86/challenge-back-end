@@ -23,9 +23,18 @@ namespace BlogTJMT.Data.Repositories
         }
 
         public void Dispose() => _db.Dispose();
-        public List<PostComentario> Get() { return _db.PostComentarios.ToList(); }
+        public List<PostComentario> Get()
+        {
+            return _db.PostComentarios
+                            .Include(nameof(Post))
+                            .Include($"{nameof(Post)}.{nameof(Usuario)}")
+                            .Include(nameof(Usuario)).ToList();
+        }
         public PostComentario Get(int id) { return _db.PostComentarios.FirstOrDefault(coluna => coluna.Id == id); }
-        public PostComentario GetPorUsuario(int usuarioId) { return _db.PostComentarios.FirstOrDefault(coluna => coluna.UsuarioId == usuarioId); }
+        public PostComentario GetPorUsuario(int usuarioId)
+        {
+            return _db.PostComentarios.FirstOrDefault(coluna => coluna.UsuarioId == usuarioId);
+        }
 
         public PostComentario Post(PostComentario postComentario)
         {

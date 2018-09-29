@@ -1,4 +1,5 @@
-﻿using BlogTJMT.Common.Validations;
+﻿using BlogTJMT.Common.Resources;
+using BlogTJMT.Common.Validations;
 using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
@@ -24,8 +25,8 @@ namespace BlogTJMT.Data.Repositories
         }
 
         public void Dispose() => _db.Dispose();
-        public List<Usuario> Get() { return _db.Usuarios.ToList(); }
-        public Usuario Get(int id) { return _db.Usuarios.FirstOrDefault(coluna => coluna.Id == id); }
+        public List<Usuario> Get() { return _db.Usuarios.Include(nameof(Perfil)).ToList(); }
+        public Usuario Get(int id) { return _db.Usuarios.Include(nameof(Perfil)).FirstOrDefault(coluna => coluna.Id == id); }
 
         public Usuario Post(Usuario usuario)
         {
@@ -50,7 +51,7 @@ namespace BlogTJMT.Data.Repositories
                           where item.Email == (usuario.Email) && item.Id != usuario.Id
                           select item).FirstOrDefault();
 
-            if (result != null) throw new Exception($"Já existe um usuário cadastrado com este e-mail: {usuario.Email}");
+            if (result != null) throw new Exception($"{MensagensErro.UsuarioDuplicado} {usuario.Email}");
         }
     }
 }
