@@ -158,6 +158,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,13 +177,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlogTJMT.Common\BlogTJMT.Common.csproj">
+      <Project>{3c8071b8-24b3-42b2-8331-971608d1458b}</Project>
+      <Name>BlogTJMT.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlogTJMT.Data\BlogTJMT.Data.csproj">
       <Project>{871169f7-555a-4d1e-bd4c-c7c007393d30}</Project>
       <Name>BlogTJMT.Data</Name>

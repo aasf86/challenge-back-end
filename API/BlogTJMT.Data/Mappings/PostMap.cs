@@ -15,7 +15,7 @@ namespace BlogTJMT.Data.Mappings
             Property(coluna => coluna.Conteudo).IsRequired().HasMaxLength(650);
             Property(coluna => coluna.ImagemDestaque).HasColumnType("nvarchar(max)");
 
-            HasRequired(coluna => coluna.Autor);
+            HasRequired(coluna => coluna.Usuario);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace BlogTJMT.Domain.Model
         public string Conteudo { get; set; }
         public int Visualizacoes { get; set; }
         public int Curtidas { get; set; }
-        public int AutorId { get; set; }
-        public virtual Usuario Autor { get; set; }
+        public int UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
         public DateTime Data { get; set; }
         public string ImagemDestaque { get; set; }
     }

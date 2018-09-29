@@ -8,7 +8,8 @@ namespace BlogTJMT.Data.DataContexts
     {
         public BlogTJMTDataContext() : base("BlogTJMTConnectionString")
         {
-            Database.SetInitializer(new BlogTJMTDataContextInitializer());
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Categoria> Categorias { get; set; }

@@ -41,6 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract\Repositories\IPostComentarioRepository.cs" />
+    <Compile Include="Contract\Repositories\IPostRepository.cs" />
+    <Compile Include="Contract\Repositories\ILoginRepository.cs" />
+    <Compile Include="Contract\Repositories\IMenuPermicaoRepository.cs" />
+    <Compile Include="Contract\Repositories\IUsuarioRepository.cs" />
+    <Compile Include="Contract\Repositories\ICategoriaRepository.cs" />
+    <Compile Include="Contract\Repositories\IPerfilRepository.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\Menu.cs" />

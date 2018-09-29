@@ -14,7 +14,7 @@ namespace BlogTJMT.Data.Mappings
             Property(coluna => coluna.Data).IsRequired();
 
             HasRequired(coluna => coluna.Post);
-            HasRequired(coluna => coluna.Usuario);
+            HasRequired(coluna => coluna.Usuario).WithMany().WillCascadeOnDelete(false);
         }
     }
 }
