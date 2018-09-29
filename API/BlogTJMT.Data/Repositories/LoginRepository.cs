@@ -1,6 +1,10 @@
-﻿using BlogTJMT.Data.DataContexts;
+﻿using System;
+using BlogTJMT.Common.Security;
+using BlogTJMT.Common.Validations;
+using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
+using System.Linq;
 
 namespace BlogTJMT.Data.Repositories
 {
@@ -8,14 +12,33 @@ namespace BlogTJMT.Data.Repositories
     {
         private BlogTJMTDataContext _db = new BlogTJMTDataContext();
 
-        public void Dispose()
+        public LoginRepository(BlogTJMTDataContext context)
         {
-            throw new System.NotImplementedException();
+            _db = context;
         }
 
-        public Usuario Get(Login login)
+        public void Dispose() => _db.Dispose();
+
+        public Usuario AutenticaUsuario(Login login)
         {
-            throw new System.NotImplementedException();
+            ValidationClass.ValidaClasse(login);
+            login.Senha.Encrypta();
+            return ValidaUsuario(ProcuraUsuario(login));
+        }
+
+        private Usuario ProcuraUsuario(Login login)
+        {
+            return (from item in _db.Usuarios
+                    where item.Email.ToLower() == (login.Email.ToLower()) && item.Senha == (login.Senha)
+                    select item).FirstOrDefault();
+        }
+
+        private Usuario ValidaUsuario(Usuario usuario)
+        {
+            if (usuario == null)
+                throw new Exception("Usuário não encontrado.");
+
+            return usuario;
         }
     }
 }

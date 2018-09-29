@@ -7,8 +7,8 @@ namespace BlogTJMT.Domain.Contract.Repositories
     {
         List<Usuario> Get();
         Usuario Get(int id);
-        Usuario Post(Categoria usuario);
-        Usuario Put(Categoria usuario);
+        Usuario Post(Usuario usuario);
+        Usuario Put(Usuario usuario);
         void Delete(int id);
         void Dispose();
     }

@@ -1,7 +1,10 @@
-﻿using BlogTJMT.Data.DataContexts;
+﻿using BlogTJMT.Common.Validations;
+using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BlogTJMT.Data.Repositories
 {
@@ -9,34 +12,45 @@ namespace BlogTJMT.Data.Repositories
     {
         private BlogTJMTDataContext _db = new BlogTJMTDataContext();
 
+        public UsuarioRepository(BlogTJMTDataContext context)
+        {
+            _db = context;
+        }
+
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            _db.Usuarios.Remove(_db.Usuarios.Find(id));
+            _db.SaveChanges();
         }
 
-        public void Dispose()
+        public void Dispose() => _db.Dispose();
+        public List<Usuario> Get() { return _db.Usuarios.ToList(); }
+        public Usuario Get(int id) { return _db.Usuarios.FirstOrDefault(coluna => coluna.Id == id); }
+
+        public Usuario Post(Usuario usuario)
         {
-            throw new System.NotImplementedException();
+            ValidationClass.ValidaClasse(usuario);
+            _db.Usuarios.Add(usuario);
+            _db.SaveChanges();
+
+            return usuario;
         }
 
-        public List<Usuario> Get()
+        public Usuario Put(Usuario usuario)
         {
-            throw new System.NotImplementedException();
+            _db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+
+            return usuario;
         }
 
-        public Usuario Get(int id)
+        private void ValidaDuplicidade(Usuario usuario)
         {
-            throw new System.NotImplementedException();
-        }
+            var result = (from item in _db.Usuarios
+                          where item.Email == (usuario.Email) && item.Id != usuario.Id
+                          select item).FirstOrDefault();
 
-        public Usuario Post(Categoria usuario)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Usuario Put(Categoria usuario)
-        {
-            throw new System.NotImplementedException();
+            if (result != null) throw new Exception($"Já existe um usuário cadastrado com este e-mail: {usuario.Email}");
         }
     }
 }

@@ -10,6 +10,11 @@ namespace BlogTJMT.Data.Repositories
     {
         private BlogTJMTDataContext _db = new BlogTJMTDataContext();
 
+        public MenuPermicaoRepository(BlogTJMTDataContext context)
+        {
+            _db = context;
+        }
+
         public void Dispose() =>  _db.Dispose();
 
         public List<MenuPermicao> GetPorPerfil(int perfilId) { return _db.MenuPermicoes.Where(coluna => coluna.PerfilPermicao.PerfilId == perfilId).ToList(); }

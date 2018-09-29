@@ -1,4 +1,5 @@
-﻿using BlogTJMT.Data.DataContexts;
+﻿using BlogTJMT.Common.Validations;
+using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
 using System.Collections.Generic;
@@ -9,6 +10,11 @@ namespace BlogTJMT.Data.Repositories
     public class PostComentarioRepository : IPostComentarioRepository
     {
         private BlogTJMTDataContext _db = new BlogTJMTDataContext();
+
+        public PostComentarioRepository(BlogTJMTDataContext context)
+        {
+            _db = context;
+        }
 
         public void Delete(int id)
         {
@@ -21,20 +27,22 @@ namespace BlogTJMT.Data.Repositories
         public PostComentario Get(int id) { return _db.PostComentarios.FirstOrDefault(coluna => coluna.Id == id); }
         public PostComentario GetPorUsuario(int usuarioId) { return _db.PostComentarios.FirstOrDefault(coluna => coluna.UsuarioId == usuarioId); }
 
-        public PostComentario Post(PostComentario categoria)
+        public PostComentario Post(PostComentario postComentario)
         {
-            _db.PostComentarios.Add(categoria);
+            ValidationClass.ValidaClasse(postComentario);
+            _db.PostComentarios.Add(postComentario);
             _db.SaveChanges();
 
-            return categoria;
+            return postComentario;
         }
 
-        public PostComentario Put(PostComentario categoria)
+        public PostComentario Put(PostComentario postComentario)
         {
-            _db.Entry(categoria).State = System.Data.Entity.EntityState.Modified;
+            ValidationClass.ValidaClasse(postComentario);
+            _db.Entry(postComentario).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
 
-            return categoria;
+            return postComentario;
         }
     }
 }

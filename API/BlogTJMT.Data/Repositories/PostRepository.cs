@@ -1,4 +1,5 @@
-﻿using BlogTJMT.Data.DataContexts;
+﻿using BlogTJMT.Common.Validations;
+using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
 using System;
@@ -10,6 +11,11 @@ namespace BlogTJMT.Data.Repositories
     public class PostRepository : IPostRepository
     {
         private BlogTJMTDataContext _db = new BlogTJMTDataContext();
+
+        public PostRepository(BlogTJMTDataContext context)
+        {
+            _db = context;
+        }
 
         public void Delete(int id)
         {
@@ -36,6 +42,7 @@ namespace BlogTJMT.Data.Repositories
 
         public Post Post(Post post)
         {
+            ValidationClass.ValidaClasse(post);
             _db.Posts.Add(post);
             _db.SaveChanges();
 
@@ -44,6 +51,7 @@ namespace BlogTJMT.Data.Repositories
 
         public Post Put(Post post)
         {
+            ValidationClass.ValidaClasse(post);
             _db.Entry(post).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
 
