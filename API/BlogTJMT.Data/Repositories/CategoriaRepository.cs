@@ -1,7 +1,6 @@
 ﻿using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using BlogTJMT.Data.DataContexts;
+﻿using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
+using System.Collections.Generic;
 
 namespace BlogTJMT.Data.Repositories
 {
