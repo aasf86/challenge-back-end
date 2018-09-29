@@ -1,12 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlogTJMT.Data.Mappings;
+using BlogTJMT.Domain.Model;
+using System.Data.Entity;
 
 namespace BlogTJMT.Data.DataContexts
 {
-    public class BlogTJMTDataContext
+    public class BlogTJMTDataContext : DbContext
     {
+        public BlogTJMTDataContext() : base("BlogTJMTConnectionString")
+        {
+            Database.SetInitializer(new BlogTJMTDataContextInitializer());
+        }
+
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<MenuPermicao> MenuPermicoes { get; set; }
+        public DbSet<Perfil> Perfis { get; set; }
+        public DbSet<PerfilPermicao> PerfilPermicoes { get; set; }
+        public DbSet<Permicao> Permicoes { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostCategoria> PostCategorias { get; set; }
+        public DbSet<PostComentario> PostComentarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CategoriaMap());
+            modelBuilder.Configurations.Add(new MenuMap());
+            modelBuilder.Configurations.Add(new MenuPermicaoMap());
+            modelBuilder.Configurations.Add(new PerfilMap());
+            modelBuilder.Configurations.Add(new PerfilPermicaoMap());
+            modelBuilder.Configurations.Add(new PermicaoMap());
+            modelBuilder.Configurations.Add(new PostCategoriaMap());
+            modelBuilder.Configurations.Add(new PostComentarioMap());
+            modelBuilder.Configurations.Add(new PostMap());
+            modelBuilder.Configurations.Add(new UsuarioMap());
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

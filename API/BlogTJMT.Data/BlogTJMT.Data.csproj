@@ -49,14 +49,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContexts\BlogTJMTDataContext.cs" />
+    <Compile Include="DataContexts\BlogTJMTDataContextInitializer.cs" />
+    <Compile Include="Mappings\CategoriaMap.cs" />
+    <Compile Include="Mappings\MenuMap.cs" />
+    <Compile Include="Mappings\MenuPermicaoMap.cs" />
+    <Compile Include="Mappings\PerfilMap.cs" />
+    <Compile Include="Mappings\PerfilPermicaoMap.cs" />
+    <Compile Include="Mappings\PermicaoMap.cs" />
+    <Compile Include="Mappings\PostCategoriaMap.cs" />
+    <Compile Include="Mappings\PostComentarioMap.cs" />
+    <Compile Include="Mappings\PostMap.cs" />
+    <Compile Include="Mappings\UsuarioMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlogTJMT.Common\BlogTJMT.Common.csproj">
+      <Project>{3C8071B8-24B3-42B2-8331-971608D1458B}</Project>
+      <Name>BlogTJMT.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlogTJMT.Domain\BlogTJMT.Domain.csproj">
+      <Project>{e9967c43-9a34-4a85-8a6c-a565ff246738}</Project>
+      <Name>BlogTJMT.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
