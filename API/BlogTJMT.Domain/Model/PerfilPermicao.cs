@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
         public int PerfilId { get; set; }
-        public int PerfilPermicaoId { get; set; }
+        public int PermicaoId { get; set; }
         public virtual Perfil Perfil { get; set; }
-        public virtual PerfilPermicao PerfilPermicao { get; set; }
+        public virtual Permicao Permicao { get; set; }
     }
 }
