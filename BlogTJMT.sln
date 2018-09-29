@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogTJMT.Common", "API\Blog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogTJMT.Data", "API\BlogTJMT.Data\BlogTJMT.Data.csproj", "{871169F7-555A-4D1E-BD4C-C7C007393D30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogTJMT.Api", "API\BlogTJMT.Api\BlogTJMT.Api.csproj", "{7098C030-C886-4B72-A28A-F02EE7C52988}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{871169F7-555A-4D1E-BD4C-C7C007393D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{871169F7-555A-4D1E-BD4C-C7C007393D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{871169F7-555A-4D1E-BD4C-C7C007393D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7098C030-C886-4B72-A28A-F02EE7C52988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7098C030-C886-4B72-A28A-F02EE7C52988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7098C030-C886-4B72-A28A-F02EE7C52988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7098C030-C886-4B72-A28A-F02EE7C52988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
