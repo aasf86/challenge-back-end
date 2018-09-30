@@ -15,7 +15,7 @@ Um blog é desejável criar, para batalhas nossas adiante publicar. Para continu
         - Ver quero post com mais likes em primeiro lugar na Home.
     - Home page, quantidade de views e likes.    
     - Post conter deve: Título, Descrição(resumo do post), conteudo(o post em si), quantidade de views e de likes.
-    - Resumo ter deve(como um relatório): Total de likes e views de todos os posts e a porcentagem de likes e post que cada post equivale do total de todos os posts.
+    - Resumo ter deve(como um relatório): Total de likes e views de todos os posts e a porcentagem de likes e views que cada post equivale do total de todos os posts.
 
 Fork fazer deste repositório, conclua o que foi pedido.
 
