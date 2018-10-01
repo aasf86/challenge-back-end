@@ -161,7 +161,6 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
-    <Compile Include="Controllers\MenuPermicaoController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\PostComentarioController.cs" />
     <Compile Include="Controllers\PostController.cs" />

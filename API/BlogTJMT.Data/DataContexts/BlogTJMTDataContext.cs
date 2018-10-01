@@ -13,8 +13,6 @@ namespace BlogTJMT.Data.DataContexts
         }
 
         public DbSet<Categoria> Categorias { get; set; }
-        public DbSet<Menu> Menus { get; set; }
-        public DbSet<MenuPermicao> MenuPermicoes { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<PerfilPermicao> PerfilPermicoes { get; set; }
         public DbSet<Permicao> Permicoes { get; set; }
@@ -25,8 +23,6 @@ namespace BlogTJMT.Data.DataContexts
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CategoriaMap());
-            modelBuilder.Configurations.Add(new MenuMap());
-            modelBuilder.Configurations.Add(new MenuPermicaoMap());
             modelBuilder.Configurations.Add(new PerfilMap());
             modelBuilder.Configurations.Add(new PerfilPermicaoMap());
             modelBuilder.Configurations.Add(new PermicaoMap());

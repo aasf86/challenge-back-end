@@ -50,8 +50,6 @@
   <ItemGroup>
     <Compile Include="DataContexts\BlogTJMTDataContext.cs" />
     <Compile Include="Mappings\CategoriaMap.cs" />
-    <Compile Include="Mappings\MenuMap.cs" />
-    <Compile Include="Mappings\MenuPermicaoMap.cs" />
     <Compile Include="Mappings\PerfilMap.cs" />
     <Compile Include="Mappings\PerfilPermicaoMap.cs" />
     <Compile Include="Mappings\PermicaoMap.cs" />
@@ -66,7 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoriaRepository.cs" />
     <Compile Include="Repositories\LoginRepository.cs" />
-    <Compile Include="Repositories\MenuPermicaoRepository.cs" />
     <Compile Include="Repositories\PerfilRepository.cs" />
     <Compile Include="Repositories\PostComentarioRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
