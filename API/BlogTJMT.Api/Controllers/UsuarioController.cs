@@ -12,7 +12,7 @@ namespace BlogTJMT.Api.Controllers
     [RoutePrefix("api/v1")]
     public class UsuarioController : ApiController
     {
-        private UsuarioRepository _UsuarioRepository = new UsuarioRepository(new BlogTJMTDataContext());
+        private readonly UsuarioRepository _UsuarioRepository = new UsuarioRepository(new BlogTJMTDataContext());
 
         [Route("usuario")]
         [HttpPost]
@@ -57,6 +57,11 @@ namespace BlogTJMT.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+        }
+
+        public void Dispose()
+        {
+            _UsuarioRepository.Dispose();
         }
     }
 }

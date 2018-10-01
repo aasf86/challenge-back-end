@@ -12,7 +12,7 @@ namespace BlogTJMT.Api.Controllers
     [RoutePrefix("api/v1")]
     public class CategoriaController : ApiController
     {
-        private CategoriaRepository _CategoriaRepository = new CategoriaRepository(new BlogTJMTDataContext());
+        private readonly CategoriaRepository _CategoriaRepository = new CategoriaRepository(new BlogTJMTDataContext());
 
         [Route("categoria")]
         public HttpResponseMessage Get()
@@ -72,6 +72,11 @@ namespace BlogTJMT.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+        }
+
+        public void Dispose()
+        {
+            _CategoriaRepository.Dispose();
         }
     }
 }

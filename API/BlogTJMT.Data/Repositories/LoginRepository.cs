@@ -9,27 +9,13 @@ using System.Linq;
 
 namespace BlogTJMT.Data.Repositories
 {
-    public class LoginRepository : ILoginRepository
+    public class LoginRepository : ILoginRepository, IDisposable
     {
-        private BlogTJMTDataContext _db = new BlogTJMTDataContext();
-
-        public LoginRepository(BlogTJMTDataContext context)
-        {
-            _db = context;
-        }
-
-        public void Dispose() => _db.Dispose();
-
-        public Usuario AutenticaUsuario(Login login)
-        {
-            ValidationClass.ValidaClasse(login);
-            login.Senha = login.Senha.Encrypta();
-            return ValidaUsuario(ProcuraUsuario(login));
-        }
+        private readonly BlogTJMTDataContext _db = new BlogTJMTDataContext();
 
         private Usuario ProcuraUsuario(Login login)
         {
-            return (from item in _db.Usuarios.Include("Perfil").Include("Perfil.Permicoes")
+            return (from item in _db.Usuarios.Include(nameof(Perfil)).Include("Perfil.Permicoes")
                     where item.Email.ToLower() == (login.Email.ToLower()) && item.Senha == (login.Senha)
                     select item).FirstOrDefault();
         }
@@ -40,6 +26,24 @@ namespace BlogTJMT.Data.Repositories
                 throw new Exception(MensagensErro.UsuarioNaoEncontrado);
 
             return usuario;
+        }
+
+        public LoginRepository(BlogTJMTDataContext context)
+        {
+            _db = context;
+        }
+
+        public void Dispose()
+        {
+            _db.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public Usuario AutenticaUsuario(Login login)
+        {
+            ValidationClass.ValidaClasse(login);
+            login.Senha = login.Senha.Encrypta();
+            return ValidaUsuario(ProcuraUsuario(login));
         }
     }
 }

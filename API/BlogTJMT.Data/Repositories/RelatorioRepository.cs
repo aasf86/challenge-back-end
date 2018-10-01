@@ -1,33 +1,15 @@
 ﻿using BlogTJMT.Data.DataContexts;
-using BlogTJMT.Domain.Model;
-using System.Linq;
 using BlogTJMT.Domain.Contract.Repositories;
+using BlogTJMT.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BlogTJMT.Data.Repositories
 {
-    public class RelatorioRepository : IRelatorioRepository
+    public class RelatorioRepository : IRelatorioRepository, IDisposable
     {
-        private BlogTJMTDataContext _db = new BlogTJMTDataContext();
-
-        public RelatorioRepository(BlogTJMTDataContext context)
-        {
-            _db = context;
-        }
-
-        public void Dispose() => _db.Dispose();
-        public Relatorio Get()
-        {
-            var rel = new Relatorio
-            {
-                TotalCurtidas = RetornaTotalCurtidas(),
-                TotalVisualizacoes = RetornaTotalVisualizacoes(),
-                PostRelatorios = RetornaListaDePosts()
-            };
-
-            return rel;
-        }
+        private readonly BlogTJMTDataContext _db = new BlogTJMTDataContext();
 
         private List<PostRelatorio> RetornaListaDePosts()
         {
@@ -70,6 +52,29 @@ namespace BlogTJMT.Data.Repositories
         private int RetornaTotalCurtidas()
         {
             return _db.Posts.Sum(coluna => coluna.Curtidas);
+        }
+
+        public RelatorioRepository(BlogTJMTDataContext context)
+        {
+            _db = context;
+        }
+
+        public void Dispose()
+        {
+            _db.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public Relatorio Get()
+        {
+            var rel = new Relatorio
+            {
+                TotalCurtidas = RetornaTotalCurtidas(),
+                TotalVisualizacoes = RetornaTotalVisualizacoes(),
+                PostRelatorios = RetornaListaDePosts()
+            };
+
+            return rel;
         }
     }
 }

@@ -56,9 +56,9 @@
     <Compile Include="Mappings\PostComentarioMap.cs" />
     <Compile Include="Mappings\PostMap.cs" />
     <Compile Include="Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201809302202114_Initial.cs" />
-    <Compile Include="Migrations\201809302202114_Initial.Designer.cs">
-      <DependentUpon>201809302202114_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201810010509418_Initial.cs" />
+    <Compile Include="Migrations\201810010509418_Initial.Designer.cs">
+      <DependentUpon>201810010509418_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,8 +88,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809302202114_Initial.resx">
-      <DependentUpon>201809302202114_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810010509418_Initial.resx">
+      <DependentUpon>201810010509418_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

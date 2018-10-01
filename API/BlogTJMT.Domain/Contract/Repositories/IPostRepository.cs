@@ -13,6 +13,7 @@ namespace BlogTJMT.Domain.Contract.Repositories
         Post Get(int id);
         Post Post(Post post);
         Post Put(Post post);
+        void AdicionarCurtida(int id);
         void Delete(int id);
         void Dispose();
     }

@@ -5,14 +5,22 @@ using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace BlogTJMT.Data.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository, IDisposable
     {
-        private BlogTJMTDataContext _db = new BlogTJMTDataContext();
+        private readonly BlogTJMTDataContext _db = new BlogTJMTDataContext();
+
+        private void ValidaDuplicidade(Usuario usuario)
+        {
+            var result = (from item in _db.Usuarios
+                          where item.Email == (usuario.Email) && item.Id != usuario.Id
+                          select item).FirstOrDefault();
+
+            if (result != null) throw new Exception($"{MensagensErro.UsuarioDuplicado} {usuario.Email}");
+        }
 
         public UsuarioRepository(BlogTJMTDataContext context)
         {
@@ -25,11 +33,17 @@ namespace BlogTJMT.Data.Repositories
             _db.SaveChanges();
         }
 
-        public void Dispose() => _db.Dispose();
+        public void Dispose()
+        {
+            _db.Dispose();
+            GC.SuppressFinalize(this);
+        }
 
         public Usuario Post(Usuario usuario)
         {
             ValidationClass.ValidaClasse(usuario);
+
+            ValidaDuplicidade(usuario);
 
             usuario.Senha = usuario.Senha.Encrypta();
             _db.Usuarios.Add(usuario);
@@ -42,20 +56,13 @@ namespace BlogTJMT.Data.Repositories
         {
             ValidationClass.ValidaClasse(usuario);
 
+            ValidaDuplicidade(usuario);
+
             usuario.Senha = usuario.Senha.Encrypta();
             _db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
 
             return usuario;
-        }
-
-        private void ValidaDuplicidade(Usuario usuario)
-        {
-            var result = (from item in _db.Usuarios
-                          where item.Email == (usuario.Email) && item.Id != usuario.Id
-                          select item).FirstOrDefault();
-
-            if (result != null) throw new Exception($"{MensagensErro.UsuarioDuplicado} {usuario.Email}");
         }
     }
 }

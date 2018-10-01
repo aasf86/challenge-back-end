@@ -12,19 +12,19 @@ namespace BlogTJMT.Api.Controllers
     [RoutePrefix("api/v1")]
     public class PostComentarioController : ApiController
     {
-        private PostComentarioRepository _PostComentarioRepository = new PostComentarioRepository(new BlogTJMTDataContext());
-
-        [Route("postComentario")]
-        public HttpResponseMessage Get()
-        {
-            var result = _PostComentarioRepository.Get();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
+        private readonly PostComentarioRepository _PostComentarioRepository = new PostComentarioRepository(new BlogTJMTDataContext());
 
         [Route("postComentario/{id}")]
         public HttpResponseMessage Get(int id)
         {
             var result = _PostComentarioRepository.Get(id);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [Route("postComentario/especifico/{id}")]
+        public HttpResponseMessage GetEspecifico(int id)
+        {
+            var result = _PostComentarioRepository.GetEspecifico(id);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
@@ -71,6 +71,11 @@ namespace BlogTJMT.Api.Controllers
         {
             _PostComentarioRepository.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, MensagensSucesso.ComentarioExcluido);
+        }
+
+        public void Dispose()
+        {
+            _PostComentarioRepository.Dispose();
         }
     }
 }

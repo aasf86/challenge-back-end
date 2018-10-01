@@ -2,14 +2,15 @@
 using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
 using BlogTJMT.Domain.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BlogTJMT.Data.Repositories
 {
-    public class PostComentarioRepository : IPostComentarioRepository
+    public class PostComentarioRepository : IPostComentarioRepository, IDisposable
     {
-        private BlogTJMTDataContext _db = new BlogTJMTDataContext();
+        private readonly BlogTJMTDataContext _db = new BlogTJMTDataContext();
 
         public PostComentarioRepository(BlogTJMTDataContext context)
         {
@@ -22,15 +23,21 @@ namespace BlogTJMT.Data.Repositories
             _db.SaveChanges();
         }
 
-        public void Dispose() => _db.Dispose();
-        public List<PostComentario> Get()
+        public void Dispose()
+        {
+            _db.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public List<PostComentario> Get(int id)
         {
             return _db.PostComentarios
                             .Include(nameof(Post))
-                            .Include($"{nameof(Post)}.{nameof(Usuario)}")
-                            .Include(nameof(Usuario)).ToList();
+                            .Where(coluna => coluna.PostId == id).ToList();
         }
-        public PostComentario Get(int id) { return _db.PostComentarios.FirstOrDefault(coluna => coluna.Id == id); }
+
+        public PostComentario GetEspecifico(int id) { return _db.PostComentarios.FirstOrDefault(coluna => coluna.Id == id); }
+
         public PostComentario GetPorUsuario(int usuarioId)
         {
             return _db.PostComentarios.FirstOrDefault(coluna => coluna.UsuarioId == usuarioId);

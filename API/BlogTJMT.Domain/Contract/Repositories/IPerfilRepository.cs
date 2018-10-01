@@ -7,9 +7,5 @@ namespace BlogTJMT.Domain.Contract.Repositories
     {
         List<Perfil> Get();
         Perfil Get(int id);
-        Perfil Post(Perfil perfil);
-        Perfil Put(Perfil perfil);
-        void Delete(int id);
-        void Dispose();
     }
 }

@@ -11,9 +11,9 @@ namespace BlogTJMT.Api.Controllers
     [RoutePrefix("api/v1")]
     public class LoginController : ApiController
     {
-        private LoginRepository _LoginRepository = new LoginRepository(new BlogTJMTDataContext());
+        private readonly LoginRepository _LoginRepository = new LoginRepository(new BlogTJMTDataContext());
 
-        [Route("Login")]
+        [Route("login")]
         [HttpPost]
         public HttpResponseMessage Post(Login login)
         {
@@ -27,6 +27,11 @@ namespace BlogTJMT.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
             
+        }
+
+        public void Dispose()
+        {
+            _LoginRepository.Dispose();
         }
     }
 }

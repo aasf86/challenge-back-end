@@ -13,7 +13,7 @@ namespace BlogTJMT.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809302202114_Initial"; }
+            get { return "201810010509418_Initial"; }
         }
         
         string IMigrationMetadata.Source

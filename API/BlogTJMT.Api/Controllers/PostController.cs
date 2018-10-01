@@ -12,7 +12,7 @@ namespace BlogTJMT.Api.Controllers
     [RoutePrefix("api/v1")]
     public class PostController : ApiController
     {
-        private PostRepository _PostRepository = new PostRepository(new BlogTJMTDataContext());
+        private readonly PostRepository _PostRepository = new PostRepository(new BlogTJMTDataContext());
 
         [Route("post")]
         public HttpResponseMessage Get()
@@ -55,6 +55,15 @@ namespace BlogTJMT.Api.Controllers
         {
             var result = _PostRepository.Get(titulo);
             return Request.CreateResponse(HttpStatusCode.OK, result);
+
+        }
+
+        [Route("post/{id}/curtir")]
+        [HttpPost]
+        public HttpResponseMessage AdicionaCurtida(int id)
+        {
+            _PostRepository.AdicionarCurtida(id);
+            return Request.CreateResponse(HttpStatusCode.OK, "Curtida adiciona com sucesso.");
 
         }
 
@@ -101,6 +110,11 @@ namespace BlogTJMT.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+        }
+
+        public void Dispose()
+        {
+            _PostRepository.Dispose();
         }
     }
 }

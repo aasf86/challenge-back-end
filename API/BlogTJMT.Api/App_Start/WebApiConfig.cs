@@ -8,7 +8,6 @@ namespace BlogTJMT.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
             var formatters = GlobalConfiguration.Configuration.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             var settings = jsonFormatter.SerializerSettings;
@@ -18,7 +17,6 @@ namespace BlogTJMT.Api
             settings.Formatting = Formatting.Indented;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
