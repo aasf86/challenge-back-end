@@ -120,13 +120,22 @@
   <data name="CategoriaDuplicada" xml:space="preserve">
     <value>Já existe uma categoria cadastrada com está descrição:</value>
   </data>
+  <data name="ClasseInvalida" xml:space="preserve">
+    <value>A classe informada é inválida.</value>
+  </data>
   <data name="PerfilDuplicado" xml:space="preserve">
     <value>Já existe um perfil cadastrado com está descrição:</value>
+  </data>
+  <data name="PostSemUsuario" xml:space="preserve">
+    <value>Você deve estar autenticado para cadastrar um novo post.</value>
   </data>
   <data name="UsuarioDuplicado" xml:space="preserve">
     <value>Já existe um usuário cadastrado com este e-mail:</value>
   </data>
   <data name="UsuarioNaoEncontrado" xml:space="preserve">
     <value>Usuário não encontrado.</value>
+  </data>
+  <data name="UsuarioSemPermicao" xml:space="preserve">
+    <value>Este usuário não tem permição para realizar esta acão.</value>
   </data>
 </root>

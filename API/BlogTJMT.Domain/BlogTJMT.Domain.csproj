@@ -45,6 +45,7 @@
     <Compile Include="Contract\Repositories\IPostRepository.cs" />
     <Compile Include="Contract\Repositories\ILoginRepository.cs" />
     <Compile Include="Contract\Repositories\IMenuPermicaoRepository.cs" />
+    <Compile Include="Contract\Repositories\IRelatorioRepository.cs" />
     <Compile Include="Contract\Repositories\IUsuarioRepository.cs" />
     <Compile Include="Contract\Repositories\ICategoriaRepository.cs" />
     <Compile Include="Contract\Repositories\IPerfilRepository.cs" />
@@ -56,8 +57,9 @@
     <Compile Include="Model\PerfilPermicao.cs" />
     <Compile Include="Model\Permicao.cs" />
     <Compile Include="Model\Post.cs" />
-    <Compile Include="Model\PostCategoria.cs" />
     <Compile Include="Model\PostComentario.cs" />
+    <Compile Include="Model\PostRelatorio.cs" />
+    <Compile Include="Model\Relatorio.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

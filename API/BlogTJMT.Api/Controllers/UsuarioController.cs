@@ -15,21 +15,6 @@ namespace BlogTJMT.Api.Controllers
         private UsuarioRepository _UsuarioRepository = new UsuarioRepository(new BlogTJMTDataContext());
 
         [Route("usuario")]
-        public HttpResponseMessage Get()
-        {
-            var result = _UsuarioRepository.Get();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
-        [Route("usuario/{id}")]
-        public HttpResponseMessage Get(int id)
-        {
-            var result = _UsuarioRepository.Get(id);
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-
-        }
-
-        [Route("usuario")]
         [HttpPost]
         public HttpResponseMessage Post(Usuario usuario)
         {

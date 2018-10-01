@@ -6,6 +6,7 @@ namespace BlogTJMT.Domain.Contract.Repositories
     public interface IPostRepository
     {
         List<Post> Get();
+        List<Post> GetTop5();
         List<Post> GetMaisCurtidas();
         List<Post> GetMaisVisualizacoes();
         List<Post> Get(string titulo);

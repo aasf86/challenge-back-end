@@ -35,6 +35,13 @@ namespace BlogTJMT.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [Route("post/top5")]
+        public HttpResponseMessage GetTop5()
+        {
+            var result = _PostRepository.GetTop5();
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
         [Route("post/{id}")]
         public HttpResponseMessage Get(int id)
         {
@@ -43,7 +50,7 @@ namespace BlogTJMT.Api.Controllers
 
         }
 
-        [Route("post/{titulo}")]
+        [Route("post/porTitulo/{titulo}")]
         public HttpResponseMessage Get(string titulo)
         {
             var result = _PostRepository.Get(titulo);

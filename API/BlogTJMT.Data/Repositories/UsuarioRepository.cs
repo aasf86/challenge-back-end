@@ -1,4 +1,5 @@
 ﻿using BlogTJMT.Common.Resources;
+using BlogTJMT.Common.Security;
 using BlogTJMT.Common.Validations;
 using BlogTJMT.Data.DataContexts;
 using BlogTJMT.Domain.Contract.Repositories;
@@ -25,12 +26,12 @@ namespace BlogTJMT.Data.Repositories
         }
 
         public void Dispose() => _db.Dispose();
-        public List<Usuario> Get() { return _db.Usuarios.Include(nameof(Perfil)).ToList(); }
-        public Usuario Get(int id) { return _db.Usuarios.Include(nameof(Perfil)).FirstOrDefault(coluna => coluna.Id == id); }
 
         public Usuario Post(Usuario usuario)
         {
             ValidationClass.ValidaClasse(usuario);
+
+            usuario.Senha = usuario.Senha.Encrypta();
             _db.Usuarios.Add(usuario);
             _db.SaveChanges();
 
@@ -39,6 +40,9 @@ namespace BlogTJMT.Data.Repositories
 
         public Usuario Put(Usuario usuario)
         {
+            ValidationClass.ValidaClasse(usuario);
+
+            usuario.Senha = usuario.Senha.Encrypta();
             _db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
 

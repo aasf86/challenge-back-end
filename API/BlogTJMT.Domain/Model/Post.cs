@@ -15,6 +15,7 @@ namespace BlogTJMT.Domain.Model
         public virtual Usuario Usuario { get; set; }
         public DateTime Data { get; set; }
         public string ImagemDestaque { get; set; }
-        public virtual List<Categoria> Categorias { get; set; }
+        public int CategoriaId { get; set; }
+        public virtual Categoria Categoria { get; set; }
     }
 }

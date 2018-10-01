@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlogTJMT.Common.Resources;
+using System;
 
 namespace BlogTJMT.Common.Validations
 {
@@ -7,7 +8,7 @@ namespace BlogTJMT.Common.Validations
         public static void ValidaClasse<T>(T classe)
         {
             if (classe == null)
-                throw new Exception($"Classe: {nameof(classe)} inválida.");
+                throw new Exception(MensagensErro.ClasseInvalida);
         }
     }
 }

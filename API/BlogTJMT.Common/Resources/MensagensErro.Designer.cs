@@ -70,11 +70,29 @@ namespace BlogTJMT.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A classe informada é inválida..
+        /// </summary>
+        public static string ClasseInvalida {
+            get {
+                return ResourceManager.GetString("ClasseInvalida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Já existe um perfil cadastrado com está descrição:.
         /// </summary>
         public static string PerfilDuplicado {
             get {
                 return ResourceManager.GetString("PerfilDuplicado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Você deve estar autenticado para cadastrar um novo post..
+        /// </summary>
+        public static string PostSemUsuario {
+            get {
+                return ResourceManager.GetString("PostSemUsuario", resourceCulture);
             }
         }
         
@@ -93,6 +111,15 @@ namespace BlogTJMT.Common.Resources {
         public static string UsuarioNaoEncontrado {
             get {
                 return ResourceManager.GetString("UsuarioNaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este usuário não tem permição para realizar esta acão..
+        /// </summary>
+        public static string UsuarioSemPermicao {
+            get {
+                return ResourceManager.GetString("UsuarioSemPermicao", resourceCulture);
             }
         }
     }

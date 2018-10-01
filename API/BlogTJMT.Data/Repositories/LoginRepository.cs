@@ -23,13 +23,13 @@ namespace BlogTJMT.Data.Repositories
         public Usuario AutenticaUsuario(Login login)
         {
             ValidationClass.ValidaClasse(login);
-            login.Senha.Encrypta();
+            login.Senha = login.Senha.Encrypta();
             return ValidaUsuario(ProcuraUsuario(login));
         }
 
         private Usuario ProcuraUsuario(Login login)
         {
-            return (from item in _db.Usuarios
+            return (from item in _db.Usuarios.Include("Perfil").Include("Perfil.Permicoes")
                     where item.Email.ToLower() == (login.Email.ToLower()) && item.Senha == (login.Senha)
                     select item).FirstOrDefault();
         }

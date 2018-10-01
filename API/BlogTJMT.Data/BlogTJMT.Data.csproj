@@ -55,13 +55,12 @@
     <Compile Include="Mappings\PerfilMap.cs" />
     <Compile Include="Mappings\PerfilPermicaoMap.cs" />
     <Compile Include="Mappings\PermicaoMap.cs" />
-    <Compile Include="Mappings\PostCategoriaMap.cs" />
     <Compile Include="Mappings\PostComentarioMap.cs" />
     <Compile Include="Mappings\PostMap.cs" />
     <Compile Include="Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201809290242229_Initial.cs" />
-    <Compile Include="Migrations\201809290242229_Initial.Designer.cs">
-      <DependentUpon>201809290242229_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201809302202114_Initial.cs" />
+    <Compile Include="Migrations\201809302202114_Initial.Designer.cs">
+      <DependentUpon>201809302202114_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,12 +70,8 @@
     <Compile Include="Repositories\PerfilRepository.cs" />
     <Compile Include="Repositories\PostComentarioRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Repositories\RelatorioRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809290242229_Initial.resx">
-      <DependentUpon>201809290242229_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,6 +89,11 @@
       <Project>{e9967c43-9a34-4a85-8a6c-a565ff246738}</Project>
       <Name>BlogTJMT.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809302202114_Initial.resx">
+      <DependentUpon>201809302202114_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

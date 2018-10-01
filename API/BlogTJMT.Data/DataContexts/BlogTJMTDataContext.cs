@@ -19,7 +19,6 @@ namespace BlogTJMT.Data.DataContexts
         public DbSet<PerfilPermicao> PerfilPermicoes { get; set; }
         public DbSet<Permicao> Permicoes { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<PostCategoria> PostCategorias { get; set; }
         public DbSet<PostComentario> PostComentarios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
@@ -31,7 +30,6 @@ namespace BlogTJMT.Data.DataContexts
             modelBuilder.Configurations.Add(new PerfilMap());
             modelBuilder.Configurations.Add(new PerfilPermicaoMap());
             modelBuilder.Configurations.Add(new PermicaoMap());
-            modelBuilder.Configurations.Add(new PostCategoriaMap());
             modelBuilder.Configurations.Add(new PostComentarioMap());
             modelBuilder.Configurations.Add(new PostMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
